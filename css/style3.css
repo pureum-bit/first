@@ -1,0 +1,59 @@
+@charset "UTF-8";
+*{box-sizing: border-box;}
+
+/* 배경과 기본 글꼴 */
+body {
+  background-color: #bbf1ef;
+  font-family: 'Verdana','Apple SD Gothic Neo','NanumGothic',sans-serif;
+}
+
+/* 제목 스타일 (중앙 정렬) */
+h1 {
+  font-size: 18px;
+  border: 3px solid #ffffff;
+  border-radius: 20px;
+  padding: 6px 0;
+  margin: 20px auto;
+  width: 300px;
+  text-align: center;
+}
+
+/* 아래 여백 공통 설정 */
+p, ul {
+  margin-bottom: 20px;
+}
+
+/* 중앙 정렬 전용 이름표 */
+.txt-center {
+  text-align: center;
+}
+
+/* 이미지 스타일 (동그랗게) */
+img {
+  border-radius: 50%;
+}
+
+/* 리스트 기본 점 제거 및 메뉴 너비 설정 */
+.nav {
+  /* 필수 */
+  list-style: none;
+  padding: 0;
+}
+
+/* [핵심] li 태그를 수평(가로)으로 나열하기 */
+.nav li {
+  display: inline-block; /* 한 줄에 나란히 서게 함 */
+  width: 130px;          /* 각 버튼의 가로 크기 */
+  margin: 0 8px;         /* 버튼 사이의 좌우 간격 */
+}
+
+/* 버튼(링크) 스타일 */
+a {
+  display: block;        /* 버튼 전체에 클릭 영역 적용 */
+  background-color: #ff9a9e;
+  padding: 15px 0;
+  border-radius: 15px;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none; /* 밑줄 제거 */
+}
