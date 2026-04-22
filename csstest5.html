@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./css/style5.css" />
+    <title>Wedding Party Invitation</title>
+  </head>
+  <body>
+    <header>
+      <div class="innerWrap">
+        <h1>
+          <img
+            src="./assets2/hero_text.png"
+            alt="Welcome to Our Wedding Party"
+          />
+        </h1>
+        <nav>
+          <ul class="ffJosefin">
+            <!-- ff=폰트패밀리 Josefin=폰트이름-->
+            <li><a href="#msgArea">Message</a></li>
+            <li><a href="#dateArea">Date</a></li>
+            <li><a href="#formArea">Form</a></li>
+          </ul>
+        </nav>
+        <p>Scroll<br /><img src="./assets2/bar.png" alt="" /></p>
+      </div>
+    </header>
+    <main>
+      <section class="amgSec" id="msgArea">
+        <div class="innerWrap">
+          <h2>Message</h2>
+        <p>
+          금번 카피조우와 카피코는<br />
+          웨딩 파티를 개최하게 되었습니다.<br />
+        </p>
+        <p>
+          바쁘시겠지만 부디 오셔서 축하해주시면 더없이 기쁘겠습니다.<br />
+          참석 여부는 페이지 하단 폼을 통해 알려주실 수 있습니다.<br />
+        </p>
+        <p><img src="./assets2/message_img.png" alt="카피조우와 카피코" /></p>
+        </div>
+      </section>
+      <section class="dateSec" id="dateArea">
+        <div class="innerWrap">
+          <h2>Save the Date</h2>
+        <p><img src="./assets2/date_img.jpg" alt="" /></p>
+        <p>
+          3023.8.8 Thu<br />
+          Start 18:30-
+        </p>
+        <section>
+          <h3>Access</h3>
+          <p>
+            나뭇잎길 1-2-3<br />
+            Ristorante Capita에서<br />
+            02-XXXX-XXXX<br />
+          </p>
+        </div>
+        </section>
+      </section>
+      <section class="formSec" id="formArea">
+        <div class="innerWrap">
+          <h2>RSVP</h2>
+        <form action="">
+          <div>
+            <label for="#"><p>참석여부</p></label>
+            <input
+              type="radio"
+              value="참석"
+              name="attend"
+              id="attend"
+              checked="checked"
+            />
+            <label for="#">참석</label>
+            <input type="radio" value="불참" name="attend" id="attend" />
+            <label for="#">불참</label>
+          </div>
+          <div>
+            <label for="#"><p>성함</p></label>
+            <input
+              type="text"
+              id="user_name"
+              name="user_name"
+              value="이름을 입력해주세요"
+            />
+          </div>
+          <div>
+            <label for="#"><p>메일주소</p></label>
+            <input
+              type="email"
+              id="user_email"
+              name="user_email"
+              value="example@email.com"
+            />
+          </div>
+          <div>
+            <label for="#"><p>자신의 유형</p></label>
+            <select name="user_type" id="user_type">
+              <option value="초식 동물">초식 동물</option>
+              <option value="육식 동물">육식 동물</option>
+              <option value="인간" id="">인간</option>
+            </select>
+            <!-- <label for=""><p>자신의 유형</p></label>
+            <input type="radio" value="초식" name="user_type" id="user_type" checked="checked"/>
+            <label for="">초식 동물</label>
+            <input type="radio" value="육식" name="user_type" id="user_type"/>
+            <label for="">육식 동물</label>
+            <input type="radio" value="인간" name="user_type" id="user_type" />
+            <label for="">인간</label> -->
+          </div>
+          <div>
+            <label for="#"><p>알레르기 있는 음식</p></label>
+            <input
+              type="checkbox"
+              value="달걀"
+              name="user_allergy"
+              id="user_allergy"
+            />
+            <label for="#">달걀</label>
+            <input
+              type="checkbox"
+              value="우유"
+              name="user_allergy"
+              id="user_allergy"
+            />
+            <label for="#">우유</label>
+            <input
+              type="checkbox"
+              value="밀"
+              name="user_allergy"
+              id="user_allergy"
+            />
+            <label for="#">밀</label>
+            <input
+              type="checkbox"
+              value="대두"
+              name="user_allergy"
+              id="user_allergy"
+            />
+            <label for="#">대두</label>
+          </div>
+          <div>
+            <label for="#"><p>메세지</p></label>
+            <textarea
+              name="massage"
+              id="massage"
+              value="메세지를 입력해주세요"
+            ></textarea>
+          </div>
+          <p><input type="submit" name="send" id="send" value="저장" /></p>
+        </form>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p><small>© Capyzou & Capyco</small></p>
+    </footer>
+  </body>
+</html>

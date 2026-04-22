@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./css/style5-2gpt.css" />
+    <title>Wedding Party Invitation</title>
+  </head>
+  <button id="topBtn">↑</button>
+  <body>
+    <header>
+      <h1>
+        <img src="./assets2/hero_text.png" alt="Welcome to Our Wedding Party" />
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="#msgArea">Message</a></li>
+          <li><a href="#dateArea">Date</a></li>
+          <li><a href="#formArea">Form</a></li>
+        </ul>
+      </nav>
+      <p>Scroll<br /><img src="./assets2/bar.png" alt="" /></p>
+    </header>
+    <main>
+      <section id="msgArea">
+        <h2>Message</h2>
+        <p>
+          금번 카피조우와 카피코는<br />
+          웨딩 파티를 개최하게 되었습니다.<br />
+        </p>
+        <p>
+          바쁘시겠지만 부디 오셔서 축하해주시면 더없이 기쁘겠습니다.<br />
+          참석 여부는 페이지 하단 폼을 통해 알려주실 수 있습니다.<br />
+        </p>
+        <p><img src="./assets2/message_img.png" alt="카피조우와 카피코" /></p>
+      </section>
+      <section id="dateArea">
+        <h2>Save the Date</h2>
+        <p><img src="./assets2/date_img.jpg" alt="" /></p>
+        <p>
+          3023.8.8 Thu<br />
+          Start 18:30-
+        </p>
+        <section>
+          <h3>Access</h3>
+          <p>
+            나뭇잎길 1-2-3<br />
+            Ristorante Capita에서<br />
+            02-XXXX-XXXX<br />
+          </p>
+        </section>
+      </section>
+      <section id="formArea">
+        <h2>RSVP</h2>
+        <form>
+          <div class="form-group">
+            <label>참석 여부</label>
+            <select>
+              <option>참석</option>
+              <option>불참</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>성함</label>
+            <input type="text" placeholder="이름을 입력해주세요" />
+          </div>
+
+          <div class="form-group">
+            <label>이메일</label>
+            <input type="email" placeholder="example@email.com" />
+          </div>
+
+          <div class="form-group">
+            <label>유형</label>
+            <div class="radio-group">
+              <label><input type="radio" name="type" /> 초식 동물</label>
+              <label><input type="radio" name="type" /> 육식 동물</label>
+              <label><input type="radio" name="type" /> 인간</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>알레르기</label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" /> 달걀</label>
+              <label><input type="checkbox" /> 우유</label>
+              <label><input type="checkbox" /> 밀</label>
+              <label><input type="checkbox" /> 대두</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>메시지</label>
+            <textarea rows="4"></textarea>
+          </div>
+
+          <button type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p><small>© Capyzou & Capyco</small></p>
+    </footer>
+    <!-- js -->
+    <script>
+      const sections = document.querySelectorAll("main section");
+
+      const showSections = () => {
+        const trigger = window.innerHeight * 0.85;
+
+        sections.forEach((section) => {
+          const top = section.getBoundingClientRect().top;
+
+          if (top < trigger) {
+            section.classList.add("show");
+          }
+        });
+      };
+
+      window.addEventListener("scroll", showSections);
+      window.addEventListener("load", showSections);
+      const topBtn = document.getElementById("topBtn");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          topBtn.classList.add("show");
+        } else {
+          topBtn.classList.remove("show");
+        }
+      });
+
+      topBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    </script>
+  </body>
+</html>

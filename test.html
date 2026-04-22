@@ -5,18 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      ul {
+      .contaient {
         display: flex;
+      }
+      .content {
+        flex-basis: 920px;
+        background-color: peru;
+        flex-grow: 1;
+        /* 허락해주는 코드 */
+      }
+      .sidebar {
+        flex-basis: 300px;
+        background-color: yellow;
       }
     </style>
   </head>
   <body>
-    <ul>
-      <li>box1</li>
-      <li>box2</li>
-      <li>box3</li>
-      <li>box4</li>
-      <li>box5</li>
-    </ul>
+    <div class="contaient">
+      <main class="content">메인</main>
+      <aside class="sidebar">우측</aside>
+    </div>
   </body>
 </html>
+
+<!-- display: flex; 자유를 줘서 옆으로 가게 함-->

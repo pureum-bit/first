@@ -9,6 +9,10 @@ body {
   color: #333333;
 }
 
+a {
+  text-decoration: none;
+}
+
 header {
   width: 1240px;
   margin: 0 auto 44px;
@@ -38,7 +42,6 @@ header nav ul li a {
   font-size: 22px;
   font-weight: bold;
   color: #7c5d48;
-  text-decoration: none;
 }
 
 header nav ul li a:hover {
@@ -49,12 +52,119 @@ div {
   width: 1240px;
   margin: 0 auto 50px;
   display: flex;
+  justify-content: space-between;
 }
 
 main {
-  background-color: #d1a96c;
+  flex-basis: 920px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 62px 72px 32px 72px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.16);
+  /* box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.16) inset( 그림자를 안쪽으로); */
 }
 
 aside {
-  background-color: #6cbad1;
+  flex-basis: 284px;
+}
+
+aside nav {
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.16);
+  padding: 24px 28px;
+  margin-bottom: 24px;
+}
+
+aside nav h2 {
+  margin-bottom: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #7c5d48;
+}
+
+aside nav ul {
+  font-size: 14px;
+}
+
+.categoryNav ul li {
+  list-style-type: square;
+  color: #7c5d48;
+  margin: 0 0 16px 20px;
+}
+
+.categoryNav ul li a {
+  color: #333333;
+}
+
+.recentNav ul li {
+  border-bottom: 1px solid #7c5d48;
+  padding-bottom: 10px;
+  margin-bottom: 22px;
+}
+
+.recentNav ul {
+  height: 200px;
+  overflow: hidden scroll;
+  /* height: 200px;
+  overflow: hidden scroll; 스크롤바*/
+}
+
+article h2 {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+/* font-weight: ; 400은 일반, 700은 볼드/폰트마다 인지가 되는게 있고 안되는게 있다*/
+
+time {
+  background-color: #91c777;
+  border-radius: 0 22px 22px 22px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 11px 23px 10px 18px;
+  display: inline-block;
+  /* display: inline-block;을 설정하면 위 아래 약간의 padding이 자동으로 설정된다 */
+}
+
+.postDate {
+  margin-bottom: 26px;
+}
+
+.eyecatch {
+  margin-bottom: 26px;
+}
+/* eyecatch 클라이언트 시선을 사로잡는 */
+
+article h3 {
+  border-bottom: 2px solid #6ab547;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 600;
+  background-image: url(../assets2/h2_icon.png);
+  /* background-image: url(../assets2/h2_icon.png); 백그라운드보다 작으면 반복된다 */
+  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; 반복 X */
+  background-position: left bottom;
+  /* background-position: left bottom; 왼쪽에 버튼으로 */
+  padding: 20px 10px 10px 48px;
+}
+
+article section p {
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+article section {
+  margin: 0 0 50px;
+}
+
+footer {
+  background-color: #523f2e;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 10px 20px;
+  width: 1240px;
+  margin: 0 auto 0px;
 }
