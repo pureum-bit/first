@@ -181,5 +181,9 @@ footer {
   background: #555;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* 더 감성으로 갈꺼면background: rgba(0,0,0,0.6);
 backdrop-filter: blur(6px); */

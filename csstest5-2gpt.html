@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="./css/style5-2gpt.css" />
     <title>Wedding Party Invitation</title>
   </head>
-  <button id="topBtn">↑</button>
   <body>
+    <button id="topBtn">↑</button>
     <header>
       <h1>
         <img src="./assets2/hero_text.png" alt="Welcome to Our Wedding Party" />
@@ -133,6 +133,13 @@
         window.scrollTo({
           top: 0,
           behavior: "smooth",
+        });
+      });
+      document.querySelectorAll("nav a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const target = document.querySelector(link.getAttribute("href"));
+          target.scrollIntoView({ behavior: "smooth" });
         });
       });
     </script>
