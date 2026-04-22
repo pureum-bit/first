@@ -15,6 +15,14 @@ body {
   line-height: 1.7;
   color: #333;
   background: #fafafa;
+  font-family: "Noto Sans KR", sans-serif; /* 기본 본문 */
+  background: #fdfaf6; /* 전체 배경 */
+  color: #444;
+}
+
+/* 강조 컬러 */
+:root {
+  --main-color: #c8a97e;
 }
 
 /* header */
@@ -30,11 +38,22 @@ header {
   color: #fff;
   text-align: center;
   position: relative;
+  position: relative;
+  z-index: 1;
+}
+
+/* 제목은 웨딩 느낌 serif */
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", serif;
+  letter-spacing: 1px;
 }
 
 header h1 img {
   width: 280px;
   max-width: 80%;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
 }
 
 /* nav */
@@ -42,9 +61,13 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.6);
   padding: 10px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 nav ul {
@@ -52,12 +75,17 @@ nav ul {
   justify-content: center;
   gap: 20px;
   list-style: none;
+  /* 네비게이션 모바일 대응 */
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 nav a {
   color: #333;
   text-decoration: none;
   font-size: 14px;
+  /* 네비게이션 모바일 대응 */
+  font-size: 13px;
 }
 
 /* scroll */
@@ -73,7 +101,13 @@ section {
   text-align: center;
   opacity: 0;
   transform: translateY(40px);
-  transition: 0.8s;
+  transition: all 0.8s ease;
+  /* 카드 느낌 추가 */
+  background: #fff;
+  margin: 40px auto;
+  max-width: 700px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 section.show {
@@ -138,6 +172,13 @@ button {
   color: #fff;
   border-radius: 8px;
   cursor: pointer;
+  background: var(--main-color);
+  color: #fff;
+}
+
+/* hover */
+button:hover {
+  background: #b8966d;
 }
 
 /* footer */
@@ -149,6 +190,7 @@ footer {
 }
 
 #topBtn {
+  z-index: 9999;
   position: fixed;
   bottom: 30px;
   right: 20px;
@@ -183,6 +225,180 @@ footer {
 
 html {
   scroll-behavior: smooth;
+}
+
+/* -----------------------------
+🎯 radio / checkbox 공통 영역
+------------------------------ */
+
+/* 그룹을 가로로 정렬 + 줄바꿈 */
+.radio-group,
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* 👉 진짜 input은 안 보이게 숨김 */
+.radio-group input,
+.checkbox-group input {
+  display: none;
+}
+
+/* 👉 label을 버튼처럼 스타일링 */
+.radio-group label,
+.checkbox-group label {
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+/* 👉 마우스 올렸을 때 */
+.radio-group label:hover,
+.checkbox-group label:hover {
+  background: #f5f5f5;
+}
+
+/* 👉 선택됐을 때 (핵심!) */
+.radio-group input:checked + label,
+.checkbox-group input:checked + label {
+  background: #c8a97e; /* 웨딩 느낌 색 */
+  color: #fff;
+  border-color: #c8a97e;
+  background: var(--main-color);
+  border-color: var(--main-color);
+  color: #fff;
+}
+
+/* 선택 애니메이션 추가 클릭할 때 살짝 커짐 */
+.radio-group label,
+.checkbox-group label {
+  transform: scale(1);
+}
+
+.radio-group input:checked + label,
+.checkbox-group input:checked + label {
+  transform: scale(1.05);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 60px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  form {
+    width: 100%;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px; /* iOS 줌 방지 */
+  }
+}
+
+/* 음악 버튼 */
+#musicBtn {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+
+  width: 54px;
+  height: 54px;
+
+  border-radius: 50%;
+
+  background: rgba(200, 169, 126, 0.2);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(200, 169, 126, 0.4);
+
+  color: #c8a97e;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+#musicBtn:hover {
+  transform: scale(1.08);
+  background: rgba(200, 169, 126, 0.3);
+}
+
+#musicBtn svg {
+  transition: 0.3s;
+}
+
+#musicBtn:hover svg {
+  transform: rotate(10deg);
+}
+
+/* 🌸 꽃잎 */
+.petal {
+  position: absolute;
+  top: -20px;
+
+  width: 14px;
+  height: 20px;
+
+  /* 👉 꽃잎 모양 (타원 + 그라데이션) */
+  background: radial-gradient(circle at 30% 30%, #fff0f5, #e6b7c8);
+
+  border-radius: 50% 50% 50% 0;
+
+  opacity: 0.9;
+
+  animation:
+    fall linear forwards,
+    sway 3s ease-in-out infinite;
+}
+
+#petal-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* 떨어지는 애니메이션 */
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 바람 효과 */
+@keyframes sway {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 /* 더 감성으로 갈꺼면background: rgba(0,0,0,0.6);

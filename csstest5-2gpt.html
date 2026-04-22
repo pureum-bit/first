@@ -2,10 +2,72 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
+    <!-- 이거 없으면 모바일 깨짐(모바일 최적화)이거 없으면 모바일 깨짐 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style5-2gpt.css" />
+    <!-- 웨딩 느낌 serif + 한글 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Noto+Sans+KR:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
     <title>Wedding Party Invitation</title>
   </head>
   <body>
+    <!-- 꽃잎이 생성될 영역 -->
+    <div id="petal-container"></div>
+
+    <!-- 배경 음악 -->
+    <audio id="bgm" loop muted>
+      <source src="./assets2/wedding.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- 음악 버튼 -->
+    <button id="musicBtn">
+      <!-- 기본: OFF 아이콘 -->
+      <svg id="icon-off" viewBox="0 0 24 24" width="22" height="22">
+        <path d="M3 9v6h4l5 4V5L7 9H3z" fill="currentColor" />
+        <line
+          x1="16"
+          y1="8"
+          x2="21"
+          y2="16"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+        <line
+          x1="21"
+          y1="8"
+          x2="16"
+          y2="16"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+      </svg>
+
+      <!-- 기본: ON 아이콘 (숨김) -->
+      <svg
+        id="icon-on"
+        viewBox="0 0 24 24"
+        width="22"
+        height="22"
+        style="display: none"
+      >
+        <path d="M3 9v6h4l5 4V5L7 9H3z" fill="currentColor" />
+        <path
+          d="M16 8c1.5 2 1.5 6 0 8"
+          stroke="currentColor"
+          stroke-width="2"
+          fill="none"
+        />
+        <path
+          d="M19 6c3 4 3 8 0 12"
+          stroke="currentColor"
+          stroke-width="2"
+          fill="none"
+        />
+      </svg>
+    </button>
+    <!-- 상단 아이콘 -->
     <button id="topBtn">↑</button>
     <header>
       <h1>
@@ -49,9 +111,12 @@
           </p>
         </section>
       </section>
+      <!-- RSVP 영역 -->
       <section id="formArea">
         <h2>RSVP</h2>
+
         <form>
+          <!-- 참석 여부 -->
           <div class="form-group">
             <label>참석 여부</label>
             <select>
@@ -60,35 +125,55 @@
             </select>
           </div>
 
+          <!-- 이름 -->
           <div class="form-group">
             <label>성함</label>
             <input type="text" placeholder="이름을 입력해주세요" />
           </div>
 
+          <!-- 이메일 -->
           <div class="form-group">
             <label>이메일</label>
             <input type="email" placeholder="example@email.com" />
           </div>
 
+          <!-- 🔥 유형 (radio 버튼) -->
           <div class="form-group">
             <label>유형</label>
+
             <div class="radio-group">
-              <label><input type="radio" name="type" /> 초식 동물</label>
-              <label><input type="radio" name="type" /> 육식 동물</label>
-              <label><input type="radio" name="type" /> 인간</label>
+              <!-- input 먼저, 바로 뒤에 label -->
+              <input type="radio" id="type1" name="type" />
+              <label for="type1">초식 동물</label>
+
+              <input type="radio" id="type2" name="type" />
+              <label for="type2">육식 동물</label>
+
+              <input type="radio" id="type3" name="type" />
+              <label for="type3">인간</label>
             </div>
           </div>
 
+          <!-- 🔥 알레르기 (checkbox) -->
           <div class="form-group">
             <label>알레르기</label>
+
             <div class="checkbox-group">
-              <label><input type="checkbox" /> 달걀</label>
-              <label><input type="checkbox" /> 우유</label>
-              <label><input type="checkbox" /> 밀</label>
-              <label><input type="checkbox" /> 대두</label>
+              <input type="checkbox" id="egg" />
+              <label for="egg">달걀</label>
+
+              <input type="checkbox" id="milk" />
+              <label for="milk">우유</label>
+
+              <input type="checkbox" id="wheat" />
+              <label for="wheat">밀</label>
+
+              <input type="checkbox" id="soy" />
+              <label for="soy">대두</label>
             </div>
           </div>
 
+          <!-- 메시지 -->
           <div class="form-group">
             <label>메시지</label>
             <textarea rows="4"></textarea>
@@ -119,6 +204,8 @@
 
       window.addEventListener("scroll", showSections);
       window.addEventListener("load", showSections);
+
+      /* ---------------- TOP 버튼 ---------------- */
       const topBtn = document.getElementById("topBtn");
 
       window.addEventListener("scroll", () => {
@@ -135,12 +222,112 @@
           behavior: "smooth",
         });
       });
+
+      /* ---------------- smooth scroll nav ---------------- */
       document.querySelectorAll("nav a").forEach((link) => {
         link.addEventListener("click", (e) => {
           e.preventDefault();
           const target = document.querySelector(link.getAttribute("href"));
           target.scrollIntoView({ behavior: "smooth" });
         });
+      });
+
+      /* ---------------- BGM ---------------- */
+      const bgm = document.getElementById("bgm");
+      const musicBtn = document.getElementById("musicBtn");
+
+      const iconOn = document.getElementById("icon-on");
+      const iconOff = document.getElementById("icon-off");
+
+      const header = document.querySelector("header");
+
+      let isPlaying = false;
+      let autoTriggered = false;
+
+      /* ---------------- 꽃잎 시스템 ---------------- */
+      const petalContainer = document.getElementById("petal-container");
+
+      let petalInterval = null;
+
+      /* 꽃잎 생성 */
+      function createPetal() {
+        const petal = document.createElement("div");
+        petal.classList.add("petal");
+
+        petal.style.left = Math.random() * window.innerWidth + "px";
+
+        const size = Math.random() * 10 + 8;
+        petal.style.width = size + "px";
+        petal.style.height = size + "px";
+
+        petal.style.animationDuration = Math.random() * 3 + 2 + "s";
+
+        petalContainer.appendChild(petal);
+
+        setTimeout(() => {
+          petal.remove();
+        }, 5000);
+      }
+
+      /* 꽃잎 시작 */
+      function startPetals() {
+        if (petalInterval) return;
+
+        petalInterval = setInterval(createPetal, 150);
+      }
+
+      /* 꽃잎 종료 */
+      function stopPetals() {
+        clearInterval(petalInterval);
+        petalInterval = null;
+      }
+
+      /* ---------------- 음악 ON ---------------- */
+      function playMusic() {
+        bgm.muted = false;
+
+        bgm.play().catch(() => {
+          // autoplay 정책 대비 (무시 가능)
+        });
+
+        iconOff.style.display = "none";
+        iconOn.style.display = "block";
+
+        isPlaying = true;
+
+        startPetals();
+      }
+
+      /* ---------------- 음악 OFF ---------------- */
+      function stopMusic() {
+        bgm.pause();
+
+        iconOff.style.display = "block";
+        iconOn.style.display = "none";
+
+        isPlaying = false;
+
+        stopPetals();
+      }
+
+      /* ---------------- header 지나면 자동 재생 ---------------- */
+      window.addEventListener("scroll", () => {
+        const triggerPoint = window.innerHeight * 0.6;
+        const headerBottom = header.getBoundingClientRect().bottom;
+
+        if (headerBottom < triggerPoint && !autoTriggered) {
+          autoTriggered = true;
+          playMusic();
+        }
+      });
+
+      /* ---------------- 버튼 클릭 ---------------- */
+      musicBtn.addEventListener("click", () => {
+        if (!isPlaying) {
+          playMusic();
+        } else {
+          stopMusic();
+        }
       });
     </script>
   </body>
