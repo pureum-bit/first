@@ -228,7 +228,7 @@ html {
 }
 
 /* -----------------------------
-🎯 radio / checkbox 공통 영역
+radio / checkbox 공통 영역
 ------------------------------ */
 
 /* 그룹을 가로로 정렬 + 줄바꿈 */
@@ -239,13 +239,13 @@ html {
   gap: 10px;
 }
 
-/* 👉 진짜 input은 안 보이게 숨김 */
+/* 진짜 input은 안 보이게 숨김 */
 .radio-group input,
 .checkbox-group input {
   display: none;
 }
 
-/* 👉 label을 버튼처럼 스타일링 */
+/* label을 버튼처럼 스타일링 */
 .radio-group label,
 .checkbox-group label {
   padding: 10px 16px;
@@ -257,13 +257,13 @@ html {
   font-size: 14px;
 }
 
-/* 👉 마우스 올렸을 때 */
+/* 마우스 올렸을 때 */
 .radio-group label:hover,
 .checkbox-group label:hover {
   background: #f5f5f5;
 }
 
-/* 👉 선택됐을 때 (핵심!) */
+/* 선택됐을 때 (핵심!) */
 .radio-group input:checked + label,
 .checkbox-group input:checked + label {
   background: #c8a97e; /* 웨딩 느낌 색 */
@@ -333,6 +333,8 @@ img {
   cursor: pointer;
 
   transition: 0.3s;
+
+  z-index: 1000;
 }
 
 #musicBtn:hover {
@@ -348,7 +350,7 @@ img {
   transform: rotate(10deg);
 }
 
-/* 🌸 꽃잎 */
+/* 꽃잎 */
 .petal {
   position: absolute;
   top: -20px;
